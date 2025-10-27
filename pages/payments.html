@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments Management - Hotel Management System</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Hotel Management</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li onclick="window.location.href='../index.html'">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </li>
+                    <li onclick="window.location.href='dashboard.html'">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li onclick="window.location.href='rooms.html'">
+                        <i class="fas fa-bed"></i>
+                        <span>Rooms</span>
+                    </li>
+                    <li onclick="window.location.href='bookings.html'">
+                        <i class="fas fa-calendar"></i>
+                        <span>Bookings</span>
+                    </li>
+                    <li onclick="window.location.href='guests.html'">
+                        <i class="fas fa-users"></i>
+                        <span>Guests</span>
+                    </li>
+                    <li onclick="window.location.href='employees.html'">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Employees</span>
+                    </li>
+                    <li onclick="window.location.href='departments.html'">
+                        <i class="fas fa-building"></i>
+                        <span>Departments</span>
+                    </li>
+                    <li onclick="window.location.href='inventory.html'">
+                        <i class="fas fa-box"></i>
+                        <span>Inventory</span>
+                    </li>
+                    <li onclick="window.location.href='roomservice.html'">
+                        <i class="fas fa-concierge-bell"></i>
+                        <span>Room Service</span>
+                    </li>
+                    <li onclick="window.location.href='facilities.html'">
+                        <i class="fas fa-cog"></i>
+                        <span>Facilities</span>
+                    </li>
+                    <li onclick="window.location.href='maintenance.html'">
+                        <i class="fas fa-wrench"></i>
+                        <span>Maintenance</span>
+                    </li>
+                    <li onclick="window.location.href='reviews.html'">
+                        <i class="fas fa-star"></i>
+                        <span>Reviews</span>
+                    </li>
+                    <li class="active">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Payments</span>
+                    </li>
+                    <li onclick="window.location.href='users.html'">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Users</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-user">
+                    <div class="user-info">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+                <button class="export-report-btn" onclick="exportReport()">
+                    <i class="fas fa-download"></i>
+                    Export Report
+                </button>
+            </header>
+
+            <!-- Payments Content -->
+            <div class="payments-content">
+                <div class="payments-header">
+                    <div class="page-title">
+                        <h1>Payments Management</h1>
+                        <p>Track and manage payment transactions</p>
+                    </div>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>$3,550</h3>
+                            <p>Total Revenue</p>
+                            <span>This month</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>3</h3>
+                            <p>Completed</p>
+                            <span>Successful payments</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon warning">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>1</h3>
+                            <p>Pending</p>
+                            <span>Awaiting confirmation</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon critical">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>1</h3>
+                            <p>Failed</p>
+                            <span>Need attention</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weekly Revenue Chart -->
+                <div class="revenue-chart">
+                    <h3>Weekly Revenue</h3>
+                    <div class="chart-container">
+                        <div class="chart-bars">
+                            <div class="chart-bar" data-value="4500" style="height: 45%">
+                                <span class="bar-value">$4,500</span>
+                                <span class="bar-label">Mon</span>
+                            </div>
+                            <div class="chart-bar" data-value="5200" style="height: 52%">
+                                <span class="bar-value">$5,200</span>
+                                <span class="bar-label">Tue</span>
+                            </div>
+                            <div class="chart-bar" data-value="4800" style="height: 48%">
+                                <span class="bar-value">$4,800</span>
+                                <span class="bar-label">Wed</span>
+                            </div>
+                            <div class="chart-bar" data-value="6000" style="height: 60%">
+                                <span class="bar-value">$6,000</span>
+                                <span class="bar-label">Thu</span>
+                            </div>
+                            <div class="chart-bar" data-value="7500" style="height: 75%">
+                                <span class="bar-value">$7,500</span>
+                                <span class="bar-label">Fri</span>
+                            </div>
+                            <div class="chart-bar" data-value="8000" style="height: 80%">
+                                <span class="bar-value">$8,000</span>
+                                <span class="bar-label">Sat</span>
+                            </div>
+                            <div class="chart-bar" data-value="7800" style="height: 78%">
+                                <span class="bar-value">$7,800</span>
+                                <span class="bar-label">Sun</span>
+                            </div>
+                        </div>
+                        <div class="chart-y-axis">
+                            <span>$10,000</span>
+                            <span>$7,500</span>
+                            <span>$5,000</span>
+                            <span>$2,500</span>
+                            <span>$0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search and Filter Section -->
+                <div class="search-filter-section">
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="paymentSearch" placeholder="Search payments...">
+                    </div>
+                    <div class="filter-container">
+                        <i class="fas fa-filter"></i>
+                        <select id="methodFilter">
+                            <option value="">All Methods</option>
+                            <option value="credit-card">Credit Card</option>
+                            <option value="debit-card">Debit Card</option>
+                            <option value="cash">Cash</option>
+                            <option value="bank-transfer">Bank Transfer</option>
+                            <option value="paypal">PayPal</option>
+                        </select>
+                    </div>
+                    <div class="filter-container">
+                        <i class="fas fa-filter"></i>
+                        <select id="statusFilter">
+                            <option value="">All Status</option>
+                            <option value="completed">Completed</option>
+                            <option value="pending">Pending</option>
+                            <option value="failed">Failed</option>
+                            <option value="refunded">Refunded</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Payments Table -->
+                <div class="table-container">
+                    <table class="payments-table">
+                        <thead>
+                            <tr>
+                                <th>Payment ID</th>
+                                <th>Booking ID</th>
+                                <th>Guest Name</th>
+                                <th>Amount</th>
+                                <th>Method</th>
+                                <th>Transaction ID</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="paymentsTableBody">
+                            <tr>
+                                <td>PAY-001</td>
+                                <td>BK-001</td>
+                                <td>John Smith</td>
+                                <td>$1,000</td>
+                                <td>Credit Card</td>
+                                <td>TXN-548932</td>
+                                <td>2025-10-12</td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewPayment('PAY-001')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editPayment('PAY-001')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>PAY-002</td>
+                                <td>BK-002</td>
+                                <td>Sarah Johnson</td>
+                                <td>$1,250</td>
+                                <td>Debit Card</td>
+                                <td>TXN-548933</td>
+                                <td>2025-10-13</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewPayment('PAY-002')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editPayment('PAY-002')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>PAY-003</td>
+                                <td>BK-003</td>
+                                <td>Michael Brown</td>
+                                <td>$300</td>
+                                <td>Cash</td>
+                                <td>TXN-548934</td>
+                                <td>2025-10-11</td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewPayment('PAY-003')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editPayment('PAY-003')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>PAY-004</td>
+                                <td>BK-004</td>
+                                <td>Emily Davis</td>
+                                <td>$2,250</td>
+                                <td>Credit Card</td>
+                                <td>TXN-548935</td>
+                                <td>2025-10-10</td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewPayment('PAY-004')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editPayment('PAY-004')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>PAY-005</td>
+                                <td>BK-005</td>
+                                <td>David Wilson</td>
+                                <td>$500</td>
+                                <td>Bank Transfer</td>
+                                <td>TXN-548936</td>
+                                <td>2025-10-13</td>
+                                <td><span class="status-badge status-failed">Failed</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewPayment('PAY-005')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editPayment('PAY-005')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Payment Modal -->
+    <div id="viewPaymentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Payment Details</h2>
+                <span class="close" onclick="closeViewPaymentModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="payment-details">
+                    <div class="detail-row">
+                        <strong>Payment ID:</strong>
+                        <span id="viewPaymentId">PAY-001</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Booking ID:</strong>
+                        <span id="viewBookingId">BK-001</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Guest Name:</strong>
+                        <span id="viewGuestName">John Smith</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Amount:</strong>
+                        <span id="viewAmount">$1,000</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Payment Method:</strong>
+                        <span id="viewPaymentMethod">Credit Card</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Transaction ID:</strong>
+                        <span id="viewTransactionId">TXN-548932</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Date:</strong>
+                        <span id="viewPaymentDate">2025-10-12</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Status:</strong>
+                        <span id="viewPaymentStatus" class="status-badge status-completed">Completed</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Notes:</strong>
+                        <span id="viewPaymentNotes">Payment processed successfully</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeViewPaymentModal()">Close</button>
+                <button type="button" class="btn-save" onclick="editPaymentFromView()">Edit Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Payment Modal -->
+    <div id="editPaymentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Payment</h2>
+                <span class="close" onclick="closeEditPaymentModal()">&times;</span>
+            </div>
+            <form id="editPaymentForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editBookingId">Booking ID *</label>
+                        <input type="text" id="editBookingId" name="bookingId" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editGuestName">Guest Name *</label>
+                        <input type="text" id="editGuestName" name="guestName" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editAmount">Amount *</label>
+                        <input type="number" id="editAmount" name="amount" min="0" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editPaymentMethod">Payment Method *</label>
+                        <select id="editPaymentMethod" name="paymentMethod" required>
+                            <option value="">Select Method</option>
+                            <option value="credit-card">Credit Card</option>
+                            <option value="debit-card">Debit Card</option>
+                            <option value="cash">Cash</option>
+                            <option value="bank-transfer">Bank Transfer</option>
+                            <option value="paypal">PayPal</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editTransactionId">Transaction ID</label>
+                        <input type="text" id="editTransactionId" name="transactionId">
+                    </div>
+                    <div class="form-group">
+                        <label for="editPaymentStatus">Status</label>
+                        <select id="editPaymentStatus" name="paymentStatus">
+                            <option value="completed">Completed</option>
+                            <option value="pending">Pending</option>
+                            <option value="failed">Failed</option>
+                            <option value="refunded">Refunded</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editPaymentDate">Date</label>
+                        <input type="date" id="editPaymentDate" name="paymentDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="editPaymentNotes">Notes</label>
+                        <input type="text" id="editPaymentNotes" name="paymentNotes">
+                    </div>
+                </div>
+            </form>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeEditPaymentModal()">Cancel</button>
+                <button type="button" class="btn-save" onclick="updatePayment()">Update Payment</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/payments.js"></script>
+    <script src="../js/login.js"></script>
+</body>
+</html>

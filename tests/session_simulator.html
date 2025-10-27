@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Simulator - Hotel Management</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Hotel Management</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li onclick="window.location.href='dashboard.html'">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li onclick="window.location.href='rooms.html'">
+                        <i class="fas fa-bed"></i>
+                        <span>Rooms</span>
+                    </li>
+                    <li onclick="window.location.href='bookings.html'">
+                        <i class="fas fa-calendar"></i>
+                        <span>Bookings</span>
+                    </li>
+                    <li onclick="window.location.href='login.html'">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Login</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-user">
+                    <div class="user-info">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Test Content -->
+            <div class="dashboard-content">
+                <div class="dashboard-header">
+                    <h1>Session Simulator</h1>
+                    <p>Simulate different user sessions for testing</p>
+                </div>
+
+                <div style="padding: 20px; background: #f8f9fa; border-radius: 8px; margin: 20px 0;">
+                    <h3>Simulate User Sessions:</h3>
+                    
+                    <div style="margin: 15px 0;">
+                        <button onclick="simulateLogin('admin')" style="background: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px;">
+                            Login as Admin
+                        </button>
+                        <button onclick="simulateLogin('manager')" style="background: #27ae60; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px;">
+                            Login as John Manager
+                        </button>
+                        <button onclick="simulateLogin('receptionist')" style="background: #f39c12; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px;">
+                            Login as Receptionist
+                        </button>
+                    </div>
+
+                    <div style="margin: 15px 0;">
+                        <button onclick="clearSession()" style="background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px;">
+                            Clear Session
+                        </button>
+                        <button onclick="testAllPages()" style="background: #9b59b6; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px;">
+                            Test All Pages
+                        </button>
+                    </div>
+                </div>
+
+                <div style="padding: 20px; background: #e8f4fd; border-radius: 8px; margin: 20px 0;">
+                    <h3>Current Session:</h3>
+                    <pre id="sessionInfo" style="background: white; padding: 10px; border-radius: 5px; overflow-x: auto;">No session active</pre>
+                </div>
+
+                <div style="padding: 20px; background: #fff3cd; border-radius: 8px; margin: 20px 0;">
+                    <h3>Test Instructions:</h3>
+                    <ol>
+                        <li>Click one of the "Login as..." buttons above</li>
+                        <li>Navigate to different pages (Dashboard, Rooms, Bookings)</li>
+                        <li>Check that the welcome message appears on all pages</li>
+                        <li>Verify the user name in the header changes</li>
+                        <li>Check that the logout button appears</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulate login for different users
+        function simulateLogin(userType) {
+            let userSession;
+            
+            switch(userType) {
+                case 'admin':
+                    userSession = {
+                        id: 1,
+                        firstName: "Admin",
+                        lastName: "User",
+                        name: "Admin",
+                        email: "",
+                        role: "admin",
+                        phone: "+1 (555) 123-4567",
+                        loginTime: new Date().toISOString()
+                    };
+                    break;
+                case 'manager':
+                    userSession = {
+                        id: 2,
+                        firstName: "John",
+                        lastName: "Manager",
+                        name: "John Manager",
+                        email: "manager@hotel.com",
+                        role: "manager",
+                        phone: "+1 (555) 234-5678",
+                        loginTime: new Date().toISOString()
+                    };
+                    break;
+                case 'receptionist':
+                    userSession = {
+                        id: 3,
+                        firstName: "Receptionist",
+                        lastName: "Receptionist",
+                        name: "Receptionist",
+                        email: "",
+                        role: "receptionist",
+                        phone: "+1 (555) 345-6789",
+                        loginTime: new Date().toISOString()
+                    };
+                    break;
+            }
+            
+            // Store session
+            localStorage.setItem('hotelUserSession', JSON.stringify(userSession));
+            
+            console.log('Simulated login for:', userSession.name);
+            updateSessionInfo();
+            
+            // Trigger user display update
+            if (typeof displayCurrentUser === 'function') {
+                displayCurrentUser();
+            }
+        }
+
+        function clearSession() {
+            localStorage.removeItem('hotelUserSession');
+            sessionStorage.removeItem('hotelUserSession');
+            console.log('Session cleared');
+            updateSessionInfo();
+            location.reload();
+        }
+
+        function updateSessionInfo() {
+            const session = localStorage.getItem('hotelUserSession') || sessionStorage.getItem('hotelUserSession');
+            const sessionInfo = document.getElementById('sessionInfo');
+            
+            if (session) {
+                const user = JSON.parse(session);
+                sessionInfo.textContent = JSON.stringify(user, null, 2);
+            } else {
+                sessionInfo.textContent = 'No session active';
+            }
+        }
+
+        function testAllPages() {
+            const pages = ['dashboard.html', 'rooms.html', 'bookings.html', 'guests.html'];
+            const currentSession = localStorage.getItem('hotelUserSession');
+            
+            if (!currentSession) {
+                alert('Please simulate a login first!');
+                return;
+            }
+            
+            let message = 'Testing pages with current session:\n';
+            pages.forEach(page => {
+                message += `- ${page}\n`;
+            });
+            message += '\nClick OK to start testing. You can navigate to each page manually.';
+            
+            alert(message);
+        }
+
+        // Update session info on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateSessionInfo();
+        });
+    </script>
+
+    <script src="login.js"></script>
+</body>
+</html>

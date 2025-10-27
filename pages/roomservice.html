@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Service Management - Hotel Management System</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Hotel Management</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li onclick="window.location.href='../index.html'">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </li>
+                    <li onclick="window.location.href='dashboard.html'">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li onclick="window.location.href='rooms.html'">
+                        <i class="fas fa-bed"></i>
+                        <span>Rooms</span>
+                    </li>
+                    <li onclick="window.location.href='bookings.html'">
+                        <i class="fas fa-calendar"></i>
+                        <span>Bookings</span>
+                    </li>
+                    <li onclick="window.location.href='guests.html'">
+                        <i class="fas fa-users"></i>
+                        <span>Guests</span>
+                    </li>
+                    <li onclick="window.location.href='employees.html'">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Employees</span>
+                    </li>
+                    <li onclick="window.location.href='departments.html'">
+                        <i class="fas fa-building"></i>
+                        <span>Departments</span>
+                    </li>
+                    <li onclick="window.location.href='inventory.html'">
+                        <i class="fas fa-box"></i>
+                        <span>Inventory</span>
+                    </li>
+                    <li class="active">
+                        <i class="fas fa-concierge-bell"></i>
+                        <span>Room Service</span>
+                    </li>
+                    <li onclick="window.location.href='facilities.html'">
+                        <i class="fas fa-cog"></i>
+                        <span>Facilities</span>
+                    </li>
+                    <li onclick="window.location.href='maintenance.html'">
+                        <i class="fas fa-wrench"></i>
+                        <span>Maintenance</span>
+                    </li>
+                    <li onclick="window.location.href='reviews.html'">
+                        <i class="fas fa-star"></i>
+                        <span>Reviews</span>
+                    </li>
+                    <li onclick="window.location.href='payments.html'">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Payments</span>
+                    </li>
+                    <li onclick="window.location.href='users.html'">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Users</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-user">
+                    <div class="user-info">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+                <button class="add-order-btn" onclick="openAddOrderModal()">
+                    <i class="fas fa-plus"></i>
+                    New Order
+                </button>
+            </header>
+
+            <!-- Room Service Content -->
+            <div class="roomservice-content">
+                <div class="roomservice-header">
+                    <div class="page-title">
+                        <h1>Room Service Management</h1>
+                        <p>Manage room service orders and menu items</p>
+                    </div>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>47</h3>
+                            <p>Today's Orders</p>
+                            <span>Total orders</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>12</h3>
+                            <p>In Progress</p>
+                            <span>Being prepared</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>32</h3>
+                            <p>Delivered</p>
+                            <span>Completed today</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>$2,345</h3>
+                            <p>Revenue</p>
+                            <span>Today's earnings</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search and Filter Section -->
+                <div class="search-filter-section">
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="orderSearch" placeholder="Search orders...">
+                    </div>
+                    <div class="filter-container">
+                        <i class="fas fa-filter"></i>
+                        <select id="statusFilter">
+                            <option value="">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Orders Table -->
+                <div class="table-container">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Room</th>
+                                <th>Guest</th>
+                                <th>Items</th>
+                                <th>Order Time</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody">
+                            <tr>
+                                <td>ORD-001</td>
+                                <td>Room 201</td>
+                                <td>John Smith</td>
+                                <td>Club Sandwich, French Fries +1 more</td>
+                                <td>2025-10-13 12:30</td>
+                                <td>$45</td>
+                                <td><span class="status-badge status-delivered">Delivered</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewOrder('ORD-001')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editOrder('ORD-001')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>ORD-002</td>
+                                <td>Room 305</td>
+                                <td>Sarah Johnson</td>
+                                <td>Caesar Salad, Grilled Chicken +1 more</td>
+                                <td>2025-10-13 13:15</td>
+                                <td>$38</td>
+                                <td><span class="status-badge status-in-progress">In Progress</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewOrder('ORD-002')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editOrder('ORD-002')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>ORD-003</td>
+                                <td>Room 102</td>
+                                <td>Michael Brown</td>
+                                <td>Breakfast Platter, Orange Juice +1 more</td>
+                                <td>2025-10-13 08:45</td>
+                                <td>$52</td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewOrder('ORD-003')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editOrder('ORD-003')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>ORD-004</td>
+                                <td>Room 408</td>
+                                <td>Emily Davis</td>
+                                <td>Pasta Carbonara, Garlic Bread +1 more</td>
+                                <td>2025-10-13 19:20</td>
+                                <td>$68</td>
+                                <td><span class="status-badge status-in-progress">In Progress</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewOrder('ORD-004')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editOrder('ORD-004')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>ORD-005</td>
+                                <td>Room 203</td>
+                                <td>David Wilson</td>
+                                <td>Cheeseburger, Fries +1 more</td>
+                                <td>2025-10-13 14:10</td>
+                                <td>$42</td>
+                                <td><span class="status-badge status-delivered">Delivered</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewOrder('ORD-005')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editOrder('ORD-005')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Order Modal -->
+    <div id="addOrderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>New Room Service Order</h2>
+                <span class="close" onclick="closeAddOrderModal()">&times;</span>
+            </div>
+            <form id="addOrderForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="roomNumber">Room Number *</label>
+                        <select id="roomNumber" name="roomNumber" required>
+                            <option value="">Select Room</option>
+                            <option value="101">Room 101</option>
+                            <option value="102">Room 102</option>
+                            <option value="201">Room 201</option>
+                            <option value="202">Room 202</option>
+                            <option value="203">Room 203</option>
+                            <option value="301">Room 301</option>
+                            <option value="302">Room 302</option>
+                            <option value="305">Room 305</option>
+                            <option value="408">Room 408</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="guestName">Guest Name *</label>
+                        <input type="text" id="guestName" name="guestName" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="orderItems">Order Items *</label>
+                    <div class="menu-items">
+                        <div class="menu-category">
+                            <h4>Appetizers</h4>
+                            <div class="menu-item">
+                                <input type="checkbox" id="caesar-salad" name="items" value="Caesar Salad">
+                                <label for="caesar-salad">Caesar Salad - $12</label>
+                            </div>
+                            <div class="menu-item">
+                                <input type="checkbox" id="soup" name="items" value="Soup of the Day">
+                                <label for="soup">Soup of the Day - $8</label>
+                            </div>
+                        </div>
+                        <div class="menu-category">
+                            <h4>Main Courses</h4>
+                            <div class="menu-item">
+                                <input type="checkbox" id="club-sandwich" name="items" value="Club Sandwich">
+                                <label for="club-sandwich">Club Sandwich - $18</label>
+                            </div>
+                            <div class="menu-item">
+                                <input type="checkbox" id="grilled-chicken" name="items" value="Grilled Chicken">
+                                <label for="grilled-chicken">Grilled Chicken - $22</label>
+                            </div>
+                            <div class="menu-item">
+                                <input type="checkbox" id="pasta-carbonara" name="items" value="Pasta Carbonara">
+                                <label for="pasta-carbonara">Pasta Carbonara - $20</label>
+                            </div>
+                            <div class="menu-item">
+                                <input type="checkbox" id="cheeseburger" name="items" value="Cheeseburger">
+                                <label for="cheeseburger">Cheeseburger - $16</label>
+                            </div>
+                        </div>
+                        <div class="menu-category">
+                            <h4>Beverages</h4>
+                            <div class="menu-item">
+                                <input type="checkbox" id="orange-juice" name="items" value="Orange Juice">
+                                <label for="orange-juice">Orange Juice - $5</label>
+                            </div>
+                            <div class="menu-item">
+                                <input type="checkbox" id="coffee" name="items" value="Coffee">
+                                <label for="coffee">Coffee - $4</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="specialInstructions">Special Instructions</label>
+                        <textarea id="specialInstructions" name="specialInstructions" rows="3" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; resize: vertical;"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="orderStatus">Status</label>
+                        <select id="orderStatus" name="orderStatus">
+                            <option value="pending">Pending</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="delivered">Delivered</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeAddOrderModal()">Cancel</button>
+                <button type="button" class="btn-save" onclick="saveOrder()">Create Order</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Order Modal -->
+    <div id="viewOrderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Order Details</h2>
+                <span class="close" onclick="closeViewOrderModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="order-details">
+                    <div class="detail-row">
+                        <strong>Order ID:</strong>
+                        <span id="viewOrderId">ORD-001</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Room:</strong>
+                        <span id="viewOrderRoom">Room 201</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Guest:</strong>
+                        <span id="viewOrderGuest">John Smith</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Items:</strong>
+                        <span id="viewOrderItems">Club Sandwich, French Fries, Cola</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Order Time:</strong>
+                        <span id="viewOrderTime">2025-10-13 12:30</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Amount:</strong>
+                        <span id="viewOrderAmount">$45</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Status:</strong>
+                        <span id="viewOrderStatus" class="status-badge status-delivered">Delivered</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Special Instructions:</strong>
+                        <span id="viewOrderInstructions">No onions, extra ketchup</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeViewOrderModal()">Close</button>
+                <button type="button" class="btn-save" onclick="editOrderFromView()">Edit Order</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Order Modal -->
+    <div id="editOrderModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Order</h2>
+                <span class="close" onclick="closeEditOrderModal()">&times;</span>
+            </div>
+            <form id="editOrderForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editRoomNumber">Room Number *</label>
+                        <select id="editRoomNumber" name="roomNumber" required>
+                            <option value="">Select Room</option>
+                            <option value="101">Room 101</option>
+                            <option value="102">Room 102</option>
+                            <option value="201">Room 201</option>
+                            <option value="202">Room 202</option>
+                            <option value="203">Room 203</option>
+                            <option value="301">Room 301</option>
+                            <option value="302">Room 302</option>
+                            <option value="305">Room 305</option>
+                            <option value="408">Room 408</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editGuestName">Guest Name *</label>
+                        <input type="text" id="editGuestName" name="guestName" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editOrderStatus">Status</label>
+                        <select id="editOrderStatus" name="orderStatus">
+                            <option value="pending">Pending</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editOrderAmount">Amount</label>
+                        <input type="number" id="editOrderAmount" name="orderAmount" min="0" step="0.01">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editSpecialInstructions">Special Instructions</label>
+                    <textarea id="editSpecialInstructions" name="specialInstructions" rows="3" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; resize: vertical;"></textarea>
+                </div>
+            </form>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeEditOrderModal()">Cancel</button>
+                <button type="button" class="btn-save" onclick="updateOrder()">Update Order</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/roomservice.js"></script>
+    <script src="../js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Test - Hotel Management</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Hotel Management</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li onclick="window.location.href='dashboard.html'">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li onclick="window.location.href='rooms.html'">
+                        <i class="fas fa-bed"></i>
+                        <span>Rooms</span>
+                    </li>
+                    <li onclick="window.location.href='bookings.html'">
+                        <i class="fas fa-calendar"></i>
+                        <span>Bookings</span>
+                    </li>
+                    <li onclick="window.location.href='guests.html'">
+                        <i class="fas fa-users"></i>
+                        <span>Guests</span>
+                    </li>
+                    <li onclick="window.location.href='users.html'">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Users</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-user">
+                    <div class="user-info">
+                        <h3>CSS Test</h3>
+                        <p>Testing CSS loading</p>
+                    </div>
+                    <div class="user-avatar">
+                        <span>T</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Test Content -->
+            <div class="dashboard-content">
+                <div class="dashboard-header">
+                    <h1>CSS Loading Test</h1>
+                    <p>This page tests if CSS is loading correctly from the pages directory</p>
+                </div>
+
+                <!-- Test Elements -->
+                <div class="kpi-cards">
+                    <div class="kpi-card">
+                        <div class="card-header">
+                            <h3>Test Card 1</h3>
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="card-value">CSS Working</div>
+                        <div class="card-metric">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>All styles loaded</span>
+                        </div>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="card-header">
+                            <h3>Test Card 2</h3>
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="card-value">Responsive</div>
+                        <div class="card-metric">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>Mobile friendly</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="padding: 20px; background: white; border-radius: 8px; margin: 20px 0;">
+                    <h3>✅ CSS Test Results:</h3>
+                    <ul>
+                        <li><strong>Sidebar:</strong> Should be dark blue with white text</li>
+                        <li><strong>Header:</strong> Should have proper styling and layout</li>
+                        <li><strong>Cards:</strong> Should have white background with shadows</li>
+                        <li><strong>Typography:</strong> Should use proper fonts and colors</li>
+                        <li><strong>Icons:</strong> Font Awesome icons should be visible</li>
+                    </ul>
+                    
+                    <div style="margin-top: 20px;">
+                        <h4>Navigation Test:</h4>
+                        <p>Click on the sidebar items to test navigation between pages:</p>
+                        <ul>
+                            <li>Dashboard → <code>dashboard.html</code></li>
+                            <li>Rooms → <code>rooms.html</code></li>
+                            <li>Bookings → <code>bookings.html</code></li>
+                            <li>Guests → <code>guests.html</code></li>
+                            <li>Users → <code>users.html</code></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/login.js"></script>
+</body>
+</html>

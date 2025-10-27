@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .test-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        .test-btn:hover {
+            background: #c0392b;
+        }
+        .status {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Logout Function Test</h1>
+        
+        <div id="status"></div>
+        
+        <button class="test-btn" onclick="testLogout()">Test Logout Function</button>
+        
+        <button class="test-btn" onclick="checkSession()">Check Current Session</button>
+        
+        <button class="test-btn" onclick="simulateLogin()">Simulate Login</button>
+        
+        <div id="session-info"></div>
+    </div>
+
+    <script>
+        // Test logout function
+        function testLogout() {
+            const statusDiv = document.getElementById('status');
+            
+            try {
+                // Call the logout function
+                logout();
+                statusDiv.innerHTML = '<div class="success">✅ Logout function called successfully!</div>';
+            } catch (error) {
+                statusDiv.innerHTML = '<div class="error">❌ Error calling logout function: ' + error.message + '</div>';
+            }
+        }
+        
+        // Check current session
+        function checkSession() {
+            const sessionInfo = document.getElementById('session-info');
+            const session = localStorage.getItem('hotelUserSession') || sessionStorage.getItem('hotelUserSession');
+            
+            if (session) {
+                sessionInfo.innerHTML = '<div class="success">✅ Session found: ' + session + '</div>';
+            } else {
+                sessionInfo.innerHTML = '<div class="error">❌ No session found</div>';
+            }
+        }
+        
+        // Simulate login
+        function simulateLogin() {
+            const testSession = {
+                id: 1,
+                name: "Test User",
+                email: "test@hotel.com",
+                role: "admin",
+                loginTime: new Date().toISOString()
+            };
+            
+            localStorage.setItem('hotelUserSession', JSON.stringify(testSession));
+            document.getElementById('session-info').innerHTML = '<div class="success">✅ Test session created!</div>';
+        }
+        
+        // Logout function (same as in login.js)
+        function logout() {
+            console.log('Logout function called');
+            
+            if (confirm('Are you sure you want to logout?')) {
+                console.log('User confirmed logout');
+                
+                // Clear all session data
+                localStorage.removeItem('hotelUserSession');
+                sessionStorage.removeItem('hotelUserSession');
+                
+                // Clear all localStorage data to ensure complete logout
+                localStorage.clear();
+                sessionStorage.clear();
+                
+                console.log('Session data cleared');
+                
+                alert('Logged out successfully! Redirecting to login page...');
+                
+                // Redirect to login page immediately
+                window.location.href = 'login.html';
+            } else {
+                console.log('User cancelled logout');
+            }
+        }
+        
+        // Check session on page load
+        window.onload = function() {
+            checkSession();
+        };
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Hotel Management</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active" onclick="window.location.href='index.html'">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </li>
+                    <li onclick="window.location.href='pages/dashboard.html'">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li onclick="window.location.href='pages/rooms.html'">
+                        <i class="fas fa-bed"></i>
+                        <span>Rooms</span>
+                    </li>
+                    <li onclick="window.location.href='pages/bookings.html'">
+                        <i class="fas fa-calendar"></i>
+                        <span>Bookings</span>
+                    </li>
+                    <li onclick="window.location.href='pages/guests.html'">
+                        <i class="fas fa-users"></i>
+                        <span>Guests</span>
+                    </li>
+                    <li onclick="window.location.href='pages/employees.html'">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Employees</span>
+                    </li>
+                    <li onclick="window.location.href='pages/departments.html'">
+                        <i class="fas fa-building"></i>
+                        <span>Departments</span>
+                    </li>
+                    <li onclick="window.location.href='pages/inventory.html'">
+                        <i class="fas fa-box"></i>
+                        <span>Inventory</span>
+                    </li>
+                    <li onclick="window.location.href='pages/roomservice.html'">
+                        <i class="fas fa-concierge-bell"></i>
+                        <span>Room Service</span>
+                    </li>
+                    <li onclick="window.location.href='pages/facilities.html'">
+                        <i class="fas fa-cog"></i>
+                        <span>Facilities</span>
+                    </li>
+                    <li onclick="window.location.href='pages/maintenance.html'">
+                        <i class="fas fa-wrench"></i>
+                        <span>Maintenance</span>
+                    </li>
+                    <li onclick="window.location.href='pages/reviews.html'">
+                        <i class="fas fa-star"></i>
+                        <span>Reviews</span>
+                    </li>
+                    <li onclick="window.location.href='pages/payments.html'">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Payments</span>
+                    </li>
+                    <li onclick="window.location.href='pages/users.html'">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Users</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-user">
+                    <div class="user-info">
+                        <h3>Welcome</h3>
+                        <p>Please login to continue</p>
+                    </div>
+                </div>
+
+            </header>
+
+            <!-- Welcome Content -->
+            <div class="dashboard-content">
+                <div class="dashboard-header">
+                    <h1>Hotel Management System</h1>
+                    <p>Streamline your hotel operations with our comprehensive management solution</p>
+                </div>
+
+                <!-- Features Grid -->
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <h3>Room Management</h3>
+                        <p>Manage hotel rooms, availability, and room types efficiently</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <h3>Booking System</h3>
+                        <p>Handle reservations, check-ins, and check-outs seamlessly</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Guest Management</h3>
+                        <p>Track guest information and provide excellent service</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Analytics & Reports</h3>
+                        <p>Get insights into your hotel's performance and revenue</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3>Employee Management</h3>
+                        <p>Manage staff schedules, roles, and departments</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+                        <h3>Maintenance</h3>
+                        <p>Track maintenance requests and facility management</p>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <div class="action-buttons">
+                        <button onclick="window.location.href='pages/login.html'" class="action-btn primary">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Login to System
+                        </button>
+                        <button onclick="window.location.href='pages/register.html'" class="action-btn secondary">
+                            <i class="fas fa-user-plus"></i>
+                            Create Account
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+</html>

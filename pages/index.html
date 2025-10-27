@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management System</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .loading-logo {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .loading-logo i {
+            font-size: 4rem;
+            color: #3498db;
+        }
+        
+        .loading-logo h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .loading-text {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-features {
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 600px;
+        }
+        
+        .loading-feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .loading-feature i {
+            font-size: 2rem;
+            color: #3498db;
+        }
+        
+        .loading-feature span {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .loading-logo h1 {
+                font-size: 2rem;
+            }
+            
+            .loading-logo i {
+                font-size: 3rem;
+            }
+            
+            .loading-features {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <div class="loading-logo">
+            <i class="fas fa-hotel"></i>
+            <h1>Hotel Management</h1>
+        </div>
+        
+        <div class="loading-text">
+            Welcome to Hotel Management System
+        </div>
+        
+        <div class="spinner"></div>
+        
+        <div class="loading-features">
+            <div class="loading-feature">
+                <i class="fas fa-bed"></i>
+                <span>Room Management</span>
+            </div>
+            <div class="loading-feature">
+                <i class="fas fa-calendar"></i>
+                <span>Booking System</span>
+            </div>
+            <div class="loading-feature">
+                <i class="fas fa-users"></i>
+                <span>Guest Management</span>
+            </div>
+            <div class="loading-feature">
+                <i class="fas fa-chart-line"></i>
+                <span>Analytics</span>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Check if user is already logged in
+        function checkAuthAndRedirect() {
+            const session = localStorage.getItem('hotelUserSession') || sessionStorage.getItem('hotelUserSession');
+            
+            if (session) {
+                // User is already logged in, redirect to dashboard
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 2000);
+            } else {
+                // User is not logged in, redirect to login page
+                setTimeout(() => {
+                    window.location.href = 'login.html';
+                }, 2000);
+            }
+        }
+        
+        // Start the authentication check
+        checkAuthAndRedirect();
+        
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const features = document.querySelectorAll('.loading-feature');
+            
+            features.forEach((feature, index) => {
+                setTimeout(() => {
+                    feature.style.opacity = '0';
+                    feature.style.transform = 'translateY(20px)';
+                    feature.style.transition = 'all 0.5s ease';
+                    
+                    setTimeout(() => {
+                        feature.style.opacity = '1';
+                        feature.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 200);
+            });
+        });
+    </script>
+</body>
+</html>
+

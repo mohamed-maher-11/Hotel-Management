@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Management - Hotel Management System</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Hotel Management</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li onclick="window.location.href='../index.html'">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </li>
+                    <li onclick="window.location.href='dashboard.html'">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li onclick="window.location.href='rooms.html'">
+                        <i class="fas fa-bed"></i>
+                        <span>Rooms</span>
+                    </li>
+                    <li onclick="window.location.href='bookings.html'">
+                        <i class="fas fa-calendar"></i>
+                        <span>Bookings</span>
+                    </li>
+                    <li onclick="window.location.href='guests.html'">
+                        <i class="fas fa-users"></i>
+                        <span>Guests</span>
+                    </li>
+                    <li onclick="window.location.href='employees.html'">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Employees</span>
+                    </li>
+                    <li onclick="window.location.href='departments.html'">
+                        <i class="fas fa-building"></i>
+                        <span>Departments</span>
+                    </li>
+                    <li onclick="window.location.href='inventory.html'">
+                        <i class="fas fa-box"></i>
+                        <span>Inventory</span>
+                    </li>
+                    <li onclick="window.location.href='roomservice.html'">
+                        <i class="fas fa-concierge-bell"></i>
+                        <span>Room Service</span>
+                    </li>
+                    <li onclick="window.location.href='facilities.html'">
+                        <i class="fas fa-cog"></i>
+                        <span>Facilities</span>
+                    </li>
+                    <li class="active">
+                        <i class="fas fa-wrench"></i>
+                        <span>Maintenance</span>
+                    </li>
+                    <li onclick="window.location.href='reviews.html'">
+                        <i class="fas fa-star"></i>
+                        <span>Reviews</span>
+                    </li>
+                    <li onclick="window.location.href='payments.html'">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Payments</span>
+                    </li>
+                    <li onclick="window.location.href='users.html'">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Users</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-user">
+                    <div class="user-info">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+                <button class="add-request-btn" onclick="openAddRequestModal()">
+                    <i class="fas fa-plus"></i>
+                    New Request
+                </button>
+            </header>
+
+            <!-- Maintenance Content -->
+            <div class="maintenance-content">
+                <div class="maintenance-header">
+                    <div class="page-title">
+                        <h1>Maintenance Requests</h1>
+                        <p>Manage maintenance issues and repairs</p>
+                    </div>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>67</h3>
+                            <p>Total Requests</p>
+                            <span>All time</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon warning">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>2</h3>
+                            <p>Pending</p>
+                            <span>Awaiting assignment</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>2</h3>
+                            <p>In Progress</p>
+                            <span>Being worked on</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon critical">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>2</h3>
+                            <p>High Priority</p>
+                            <span>Urgent issues</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alert Banner -->
+                <div class="alert-banner critical" id="alertBanner">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span id="alertMessage">2 high priority maintenance requests require immediate attention. Please address these issues as soon as possible.</span>
+                </div>
+
+                <!-- Search and Filter Section -->
+                <div class="search-filter-section">
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="requestSearch" placeholder="Search requests...">
+                    </div>
+                    <div class="filter-container">
+                        <i class="fas fa-filter"></i>
+                        <select id="priorityFilter">
+                            <option value="">All Priority</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                    <div class="filter-container">
+                        <i class="fas fa-filter"></i>
+                        <select id="statusFilter">
+                            <option value="">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Maintenance Requests Table -->
+                <div class="table-container">
+                    <table class="maintenance-table">
+                        <thead>
+                            <tr>
+                                <th>Request ID</th>
+                                <th>Room</th>
+                                <th>Issue</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>Assigned To</th>
+                                <th>Report Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="maintenanceTableBody">
+                            <tr>
+                                <td>MR-001</td>
+                                <td>305</td>
+                                <td>
+                                    <div class="issue-details">
+                                        <strong>AC not working</strong>
+                                        <p>Air conditioning unit not cooling properly</p>
+                                    </div>
+                                </td>
+                                <td><span class="priority-badge priority-high">High</span></td>
+                                <td><span class="status-badge status-in-progress">In Progress</span></td>
+                                <td>Daniel Lee</td>
+                                <td>2025-10-12</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewRequest('MR-001')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editRequest('MR-001')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>MR-002</td>
+                                <td>210</td>
+                                <td>
+                                    <div class="issue-details">
+                                        <strong>Leaking faucet</strong>
+                                        <p>Bathroom sink faucet dripping continuously</p>
+                                    </div>
+                                </td>
+                                <td><span class="priority-badge priority-medium">Medium</span></td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>Unassigned</td>
+                                <td>2025-10-13</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewRequest('MR-002')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editRequest('MR-002')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>MR-003</td>
+                                <td>108</td>
+                                <td>
+                                    <div class="issue-details">
+                                        <strong>TV remote not working</strong>
+                                        <p>TV remote control batteries dead</p>
+                                    </div>
+                                </td>
+                                <td><span class="priority-badge priority-low">Low</span></td>
+                                <td><span class="status-badge status-pending">Pending</span></td>
+                                <td>Unassigned</td>
+                                <td>2025-10-13</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewRequest('MR-003')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editRequest('MR-003')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>MR-004</td>
+                                <td>402</td>
+                                <td>
+                                    <div class="issue-details">
+                                        <strong>Door lock malfunction</strong>
+                                        <p>Electronic door lock not responding to key card</p>
+                                    </div>
+                                </td>
+                                <td><span class="priority-badge priority-high">High</span></td>
+                                <td><span class="status-badge status-in-progress">In Progress</span></td>
+                                <td>Daniel Lee</td>
+                                <td>2025-10-13</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewRequest('MR-004')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editRequest('MR-004')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>MR-005</td>
+                                <td>203</td>
+                                <td>
+                                    <div class="issue-details">
+                                        <strong>Light bulb replacement</strong>
+                                        <p>Multiple light bulbs need replacement</p>
+                                    </div>
+                                </td>
+                                <td><span class="priority-badge priority-low">Low</span></td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                                <td>Maintenance Team</td>
+                                <td>2025-10-11</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewRequest('MR-005')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editRequest('MR-005')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Request Modal -->
+    <div id="addRequestModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>New Maintenance Request</h2>
+                <span class="close" onclick="closeAddRequestModal()">&times;</span>
+            </div>
+            <form id="addRequestForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="roomNumber">Room Number *</label>
+                        <select id="roomNumber" name="roomNumber" required>
+                            <option value="">Select Room</option>
+                            <option value="101">Room 101</option>
+                            <option value="102">Room 102</option>
+                            <option value="108">Room 108</option>
+                            <option value="201">Room 201</option>
+                            <option value="202">Room 202</option>
+                            <option value="203">Room 203</option>
+                            <option value="210">Room 210</option>
+                            <option value="305">Room 305</option>
+                            <option value="402">Room 402</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="issueTitle">Issue Title *</label>
+                        <input type="text" id="issueTitle" name="issueTitle" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="priority">Priority *</label>
+                        <select id="priority" name="priority" required>
+                            <option value="">Select Priority</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="assignedTo">Assigned To</label>
+                        <select id="assignedTo" name="assignedTo">
+                            <option value="">Select Technician</option>
+                            <option value="Daniel Lee">Daniel Lee</option>
+                            <option value="Maintenance Team">Maintenance Team</option>
+                            <option value="John Smith">John Smith</option>
+                            <option value="Sarah Wilson">Sarah Wilson</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="issueDescription">Issue Description *</label>
+                    <textarea id="issueDescription" name="issueDescription" rows="4" required style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; resize: vertical;"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="requestStatus">Status</label>
+                        <select id="requestStatus" name="requestStatus">
+                            <option value="pending">Pending</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="completed">Completed</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="estimatedCost">Estimated Cost</label>
+                        <input type="number" id="estimatedCost" name="estimatedCost" min="0" step="0.01">
+                    </div>
+                </div>
+            </form>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeAddRequestModal()">Cancel</button>
+                <button type="button" class="btn-save" onclick="saveRequest()">Create Request</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Request Modal -->
+    <div id="viewRequestModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Maintenance Request Details</h2>
+                <span class="close" onclick="closeViewRequestModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="request-details">
+                    <div class="detail-row">
+                        <strong>Request ID:</strong>
+                        <span id="viewRequestId">MR-001</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Room:</strong>
+                        <span id="viewRequestRoom">305</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Issue:</strong>
+                        <span id="viewRequestIssue">AC not working</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Description:</strong>
+                        <span id="viewRequestDescription">Air conditioning unit not cooling properly</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Priority:</strong>
+                        <span id="viewRequestPriority" class="priority-badge priority-high">High</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Status:</strong>
+                        <span id="viewRequestStatus" class="status-badge status-in-progress">In Progress</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Assigned To:</strong>
+                        <span id="viewRequestAssigned">Daniel Lee</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Report Date:</strong>
+                        <span id="viewRequestDate">2025-10-12</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Estimated Cost:</strong>
+                        <span id="viewRequestCost">$150</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeViewRequestModal()">Close</button>
+                <button type="button" class="btn-save" onclick="editRequestFromView()">Edit Request</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Request Modal -->
+    <div id="editRequestModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Maintenance Request</h2>
+                <span class="close" onclick="closeEditRequestModal()">&times;</span>
+            </div>
+            <form id="editRequestForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editRoomNumber">Room Number *</label>
+                        <select id="editRoomNumber" name="roomNumber" required>
+                            <option value="">Select Room</option>
+                            <option value="101">Room 101</option>
+                            <option value="102">Room 102</option>
+                            <option value="108">Room 108</option>
+                            <option value="201">Room 201</option>
+                            <option value="202">Room 202</option>
+                            <option value="203">Room 203</option>
+                            <option value="210">Room 210</option>
+                            <option value="305">Room 305</option>
+                            <option value="402">Room 402</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editIssueTitle">Issue Title *</label>
+                        <input type="text" id="editIssueTitle" name="issueTitle" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editPriority">Priority *</label>
+                        <select id="editPriority" name="priority" required>
+                            <option value="">Select Priority</option>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editAssignedTo">Assigned To</label>
+                        <select id="editAssignedTo" name="assignedTo">
+                            <option value="">Select Technician</option>
+                            <option value="Daniel Lee">Daniel Lee</option>
+                            <option value="Maintenance Team">Maintenance Team</option>
+                            <option value="John Smith">John Smith</option>
+                            <option value="Sarah Wilson">Sarah Wilson</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editIssueDescription">Issue Description *</label>
+                    <textarea id="editIssueDescription" name="issueDescription" rows="4" required style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; resize: vertical;"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editRequestStatus">Status</label>
+                        <select id="editRequestStatus" name="requestStatus">
+                            <option value="pending">Pending</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editEstimatedCost">Estimated Cost</label>
+                        <input type="number" id="editEstimatedCost" name="estimatedCost" min="0" step="0.01">
+                    </div>
+                </div>
+            </form>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeEditRequestModal()">Cancel</button>
+                <button type="button" class="btn-save" onclick="updateRequest()">Update Request</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/maintenance.js"></script>
+    <script src="../js/login.js"></script>
+</body>
+</html>

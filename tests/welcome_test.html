@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Message Test - Hotel Management</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Hotel Management</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li onclick="window.location.href='dashboard.html'">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li onclick="window.location.href='rooms.html'">
+                        <i class="fas fa-bed"></i>
+                        <span>Rooms</span>
+                    </li>
+                    <li onclick="window.location.href='bookings.html'">
+                        <i class="fas fa-calendar"></i>
+                        <span>Bookings</span>
+                    </li>
+                    <li onclick="window.location.href='guests.html'">
+                        <i class="fas fa-users"></i>
+                        <span>Guests</span>
+                    </li>
+                    <li onclick="window.location.href='login.html'">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Login</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-user">
+                    <div class="user-info">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Test Content -->
+            <div class="dashboard-content">
+                <div class="dashboard-header">
+                    <h1>Welcome Message Test</h1>
+                    <p>This page demonstrates the welcome message functionality</p>
+                </div>
+
+                <div style="padding: 20px; background: #f8f9fa; border-radius: 8px; margin: 20px 0;">
+                    <h3>Test Instructions:</h3>
+                    <ol>
+                        <li>Go to <a href="login.html">Login Page</a></li>
+                        <li>Login with one of these test accounts:</li>
+                        <ul>
+                            <li><strong>Admin:</strong> / admin123</li>
+                            <li><strong>Manager:</strong> manager@hotel.com / manager123</li>
+                            <li><strong>Receptionist:</strong> / reception123</li>
+                        </ul>
+                        <li>After login, you'll be redirected to dashboard</li>
+                        <li>Navigate to any page to see the "Welcome" message</li>
+                        <li>Notice the logout button in the header</li>
+                    </ol>
+                </div>
+
+                <div style="padding: 20px; background: #e8f4fd; border-radius: 8px; margin: 20px 0;">
+                    <h3>Features Implemented:</h3>
+                    <ul>
+                        <li>✅ Welcome message displays "Welcome, [Full Name]!" on all pages</li>
+                        <li>✅ User's actual name is shown in the header (not just role)</li>
+                        <li>✅ User avatar shows first letter of first name</li>
+                        <li>✅ Logout button added to header</li>
+                        <li>✅ Welcome message appears after page titles</li>
+                        <li>✅ Styled with attractive blue gradient background</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>

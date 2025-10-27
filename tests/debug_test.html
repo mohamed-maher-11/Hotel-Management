@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Test - Hotel Management</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Hotel Management</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li onclick="window.location.href='dashboard.html'">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li onclick="window.location.href='rooms.html'">
+                        <i class="fas fa-bed"></i>
+                        <span>Rooms</span>
+                    </li>
+                    <li onclick="window.location.href='bookings.html'">
+                        <i class="fas fa-calendar"></i>
+                        <span>Bookings</span>
+                    </li>
+                    <li onclick="window.location.href='login.html'">
+                        <i class="fas fa-sign-in-alt"></i>
+                        <span>Login</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-user">
+                    <div class="user-info">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Test Content -->
+            <div class="dashboard-content">
+                <div class="dashboard-header">
+                    <h1>Debug Test Page</h1>
+                    <p>This page helps debug the welcome message functionality</p>
+                </div>
+
+                <div style="padding: 20px; background: #f8f9fa; border-radius: 8px; margin: 20px 0;">
+                    <h3>Debug Information:</h3>
+                    <p><strong>Current User Session:</strong> <span id="currentUser">Loading...</span></p>
+                    <p><strong>Page Path:</strong> <span id="pagePath">Loading...</span></p>
+                    <p><strong>DOM Ready State:</strong> <span id="domState">Loading...</span></p>
+                    <button onclick="testUserDisplay()" style="background: #3498db; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 10px;">
+                        Test User Display
+                    </button>
+                    <button onclick="clearSession()" style="background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 10px; margin-left: 10px;">
+                        Clear Session
+                    </button>
+                </div>
+
+                <div style="padding: 20px; background: #e8f4fd; border-radius: 8px; margin: 20px 0;">
+                    <h3>Instructions:</h3>
+                    <ol>
+                        <li>Open browser console (F12) to see debug messages</li>
+                        <li>Login with: <strong>manager@hotel.com</strong> / <strong>manager123</strong></li>
+                        <li>Check if welcome message appears</li>
+                        <li>Navigate to Rooms or Bookings page</li>
+                        <li>Check console for any error messages</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Debug functions
+        function testUserDisplay() {
+            console.log('Manual test of user display');
+            if (typeof displayCurrentUser === 'function') {
+                displayCurrentUser();
+            } else {
+                console.error('displayCurrentUser function not found');
+            }
+        }
+
+        function clearSession() {
+            localStorage.removeItem('hotelUserSession');
+            sessionStorage.removeItem('hotelUserSession');
+            console.log('Session cleared');
+            location.reload();
+        }
+
+        // Update debug info
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = JSON.parse(localStorage.getItem('hotelUserSession') || sessionStorage.getItem('hotelUserSession') || 'null');
+            document.getElementById('currentUser').textContent = user ? JSON.stringify(user, null, 2) : 'No session found';
+            document.getElementById('pagePath').textContent = window.location.pathname;
+            document.getElementById('domState').textContent = document.readyState;
+        });
+    </script>
+
+    <script src="login.js"></script>
+</body>
+</html>

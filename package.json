@@ -1,0 +1,33 @@
+{
+  "name": "hotel-management-system",
+  "version": "1.0.0",
+  "description": "A comprehensive web-based hotel management system",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "python -m http.server 8000",
+    "test": "echo 'Open tests/session_simulator.html in browser'",
+    "clean": "echo 'Cleaning up test files...'"
+  },
+  "keywords": [
+    "hotel",
+    "management",
+    "system",
+    "web",
+    "javascript",
+    "html",
+    "css"
+  ],
+  "author": "Hotel Management Team",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/hotel-management-system.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/hotel-management-system/issues"
+  },
+  "homepage": "https://github.com/your-username/hotel-management-system#readme"
+}

@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facilities Management - Hotel Management System</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Hotel Management</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li onclick="window.location.href='../index.html'">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </li>
+                    <li onclick="window.location.href='dashboard.html'">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li onclick="window.location.href='rooms.html'">
+                        <i class="fas fa-bed"></i>
+                        <span>Rooms</span>
+                    </li>
+                    <li onclick="window.location.href='bookings.html'">
+                        <i class="fas fa-calendar"></i>
+                        <span>Bookings</span>
+                    </li>
+                    <li onclick="window.location.href='guests.html'">
+                        <i class="fas fa-users"></i>
+                        <span>Guests</span>
+                    </li>
+                    <li onclick="window.location.href='employees.html'">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Employees</span>
+                    </li>
+                    <li onclick="window.location.href='departments.html'">
+                        <i class="fas fa-building"></i>
+                        <span>Departments</span>
+                    </li>
+                    <li onclick="window.location.href='inventory.html'">
+                        <i class="fas fa-box"></i>
+                        <span>Inventory</span>
+                    </li>
+                    <li onclick="window.location.href='roomservice.html'">
+                        <i class="fas fa-concierge-bell"></i>
+                        <span>Room Service</span>
+                    </li>
+                    <li class="active">
+                        <i class="fas fa-cog"></i>
+                        <span>Facilities</span>
+                    </li>
+                    <li onclick="window.location.href='maintenance.html'">
+                        <i class="fas fa-wrench"></i>
+                        <span>Maintenance</span>
+                    </li>
+                    <li onclick="window.location.href='reviews.html'">
+                        <i class="fas fa-star"></i>
+                        <span>Reviews</span>
+                    </li>
+                    <li onclick="window.location.href='payments.html'">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Payments</span>
+                    </li>
+                    <li onclick="window.location.href='users.html'">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Users</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-user">
+                    <div class="user-info">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="add-facility-btn" onclick="openAddFacilityModal()">
+                        <i class="fas fa-plus"></i>
+                        Add Facility
+                    </button>
+                    <button class="new-booking-btn" onclick="openNewBookingModal()">
+                        <i class="fas fa-calendar"></i>
+                        New Booking
+                    </button>
+                </div>
+            </header>
+
+            <!-- Facilities Content -->
+            <div class="facilities-content">
+                <div class="facilities-header">
+                    <div class="page-title">
+                        <h1>Facilities Management</h1>
+                        <p>Manage hotel facilities and bookings</p>
+                    </div>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>12</h3>
+                            <p>Total Facilities</p>
+                            <span>Available facilities</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>18</h3>
+                            <p>Active Bookings</p>
+                            <span>Today's bookings</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>$12,450</h3>
+                            <p>Revenue (MTD)</p>
+                            <span>From bookings</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>67%</h3>
+                            <p>Utilization</p>
+                            <span>Average usage</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search Section -->
+                <div class="search-section">
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="facilitySearch" placeholder="Search facilities...">
+                    </div>
+                </div>
+
+                <!-- Facilities Table -->
+                <div class="table-container">
+                    <h3>Facilities</h3>
+                    <table class="facilities-table">
+                        <thead>
+                            <tr>
+                                <th>Facility ID</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Capacity</th>
+                                <th>Operating Hours</th>
+                                <th>Price/Hour</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="facilitiesTableBody">
+                            <tr>
+                                <td>F-001</td>
+                                <td>Swimming Pool</td>
+                                <td>Recreation</td>
+                                <td>50 people</td>
+                                <td>6:00 AM - 10:00 PM</td>
+                                <td>Free</td>
+                                <td><span class="status-badge status-open">Open</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit-btn" onclick="editFacility('F-001')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn view-btn" onclick="viewFacility('F-001')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>F-002</td>
+                                <td>Fitness Center</td>
+                                <td>Recreation</td>
+                                <td>30 people</td>
+                                <td>24/7</td>
+                                <td>Free</td>
+                                <td><span class="status-badge status-open">Open</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit-btn" onclick="editFacility('F-002')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn view-btn" onclick="viewFacility('F-002')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>F-003</td>
+                                <td>Conference Room A</td>
+                                <td>Business</td>
+                                <td>50 people</td>
+                                <td>8:00 AM - 8:00 PM</td>
+                                <td>$150</td>
+                                <td><span class="status-badge status-open">Open</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit-btn" onclick="editFacility('F-003')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn view-btn" onclick="viewFacility('F-003')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>F-004</td>
+                                <td>Spa & Wellness</td>
+                                <td>Wellness</td>
+                                <td>15 people</td>
+                                <td>9:00 AM - 9:00 PM</td>
+                                <td>$120</td>
+                                <td><span class="status-badge status-open">Open</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit-btn" onclick="editFacility('F-004')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn view-btn" onclick="viewFacility('F-004')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>F-005</td>
+                                <td>Restaurant</td>
+                                <td>Dining</td>
+                                <td>80 people</td>
+                                <td>7:00 AM - 11:00 PM</td>
+                                <td>Free</td>
+                                <td><span class="status-badge status-open">Open</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit-btn" onclick="editFacility('F-005')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn view-btn" onclick="viewFacility('F-005')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>F-006</td>
+                                <td>Banquet Hall</td>
+                                <td>Events</td>
+                                <td>200 people</td>
+                                <td>By Reservation</td>
+                                <td>$500</td>
+                                <td><span class="status-badge status-maintenance">Maintenance</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn edit-btn" onclick="editFacility('F-006')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn view-btn" onclick="viewFacility('F-006')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Recent Bookings Section -->
+                <div class="bookings-section">
+                    <h3>Recent Bookings</h3>
+                    <div class="table-container">
+                        <table class="bookings-table">
+                            <thead>
+                                <tr>
+                                    <th>Booking ID</th>
+                                    <th>Facility</th>
+                                    <th>Guest/Organization</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bookingsTableBody">
+                                <tr>
+                                    <td>FB-001</td>
+                                    <td>Conference Room A</td>
+                                    <td>Tech Corp</td>
+                                    <td>2025-10-15</td>
+                                    <td>9:00 AM - 5:00 PM</td>
+                                    <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>FB-002</td>
+                                    <td>Spa & Wellness</td>
+                                    <td>Sarah Johnson</td>
+                                    <td>2025-10-14</td>
+                                    <td>2:00 PM - 4:00 PM</td>
+                                    <td><span class="status-badge status-confirmed">Confirmed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>FB-003</td>
+                                    <td>Banquet Hall</td>
+                                    <td>Wedding Party</td>
+                                    <td>2025-10-20</td>
+                                    <td>6:00 PM - 12:00 AM</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Facility Modal -->
+    <div id="addFacilityModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Facility</h2>
+                <span class="close" onclick="closeAddFacilityModal()">&times;</span>
+            </div>
+            <form id="addFacilityForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="facilityName">Facility Name *</label>
+                        <input type="text" id="facilityName" name="facilityName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="facilityType">Type *</label>
+                        <select id="facilityType" name="facilityType" required>
+                            <option value="">Select Type</option>
+                            <option value="recreation">Recreation</option>
+                            <option value="business">Business</option>
+                            <option value="wellness">Wellness</option>
+                            <option value="dining">Dining</option>
+                            <option value="events">Events</option>
+                            <option value="sports">Sports</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="capacity">Capacity *</label>
+                        <input type="number" id="capacity" name="capacity" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pricePerHour">Price per Hour</label>
+                        <input type="number" id="pricePerHour" name="pricePerHour" min="0" step="0.01">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="operatingHours">Operating Hours *</label>
+                        <input type="text" id="operatingHours" name="operatingHours" placeholder="e.g., 8:00 AM - 8:00 PM" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="facilityStatus">Status</label>
+                        <select id="facilityStatus" name="facilityStatus">
+                            <option value="open">Open</option>
+                            <option value="closed">Closed</option>
+                            <option value="maintenance">Maintenance</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="facilityDescription">Description</label>
+                    <textarea id="facilityDescription" name="facilityDescription" rows="3" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; resize: vertical;"></textarea>
+                </div>
+            </form>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeAddFacilityModal()">Cancel</button>
+                <button type="button" class="btn-save" onclick="saveFacility()">Save Facility</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Booking Modal -->
+    <div id="newBookingModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>New Facility Booking</h2>
+                <span class="close" onclick="closeNewBookingModal()">&times;</span>
+            </div>
+            <form id="newBookingForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="bookingFacility">Facility *</label>
+                        <select id="bookingFacility" name="bookingFacility" required>
+                            <option value="">Select Facility</option>
+                            <option value="F-001">Swimming Pool</option>
+                            <option value="F-002">Fitness Center</option>
+                            <option value="F-003">Conference Room A</option>
+                            <option value="F-004">Spa & Wellness</option>
+                            <option value="F-005">Restaurant</option>
+                            <option value="F-006">Banquet Hall</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookingGuest">Guest/Organization *</label>
+                        <input type="text" id="bookingGuest" name="bookingGuest" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="bookingDate">Date *</label>
+                        <input type="date" id="bookingDate" name="bookingDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookingTime">Time *</label>
+                        <input type="text" id="bookingTime" name="bookingTime" placeholder="e.g., 9:00 AM - 5:00 PM" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="bookingStatus">Status</label>
+                        <select id="bookingStatus" name="bookingStatus">
+                            <option value="pending">Pending</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bookingAmount">Amount</label>
+                        <input type="number" id="bookingAmount" name="bookingAmount" min="0" step="0.01">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="bookingNotes">Notes</label>
+                    <textarea id="bookingNotes" name="bookingNotes" rows="3" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; resize: vertical;"></textarea>
+                </div>
+            </form>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeNewBookingModal()">Cancel</button>
+                <button type="button" class="btn-save" onclick="saveBooking()">Create Booking</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Facility Modal -->
+    <div id="viewFacilityModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Facility Details</h2>
+                <span class="close" onclick="closeViewFacilityModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="facility-details">
+                    <div class="detail-row">
+                        <strong>Facility ID:</strong>
+                        <span id="viewFacilityId">F-001</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Name:</strong>
+                        <span id="viewFacilityName">Swimming Pool</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Type:</strong>
+                        <span id="viewFacilityType">Recreation</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Capacity:</strong>
+                        <span id="viewFacilityCapacity">50 people</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Operating Hours:</strong>
+                        <span id="viewFacilityHours">6:00 AM - 10:00 PM</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Price per Hour:</strong>
+                        <span id="viewFacilityPrice">Free</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Status:</strong>
+                        <span id="viewFacilityStatus" class="status-badge status-open">Open</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Description:</strong>
+                        <span id="viewFacilityDescription">Outdoor swimming pool with lounge area</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeViewFacilityModal()">Close</button>
+                <button type="button" class="btn-save" onclick="editFacilityFromView()">Edit Facility</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Facility Modal -->
+    <div id="editFacilityModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Facility</h2>
+                <span class="close" onclick="closeEditFacilityModal()">&times;</span>
+            </div>
+            <form id="editFacilityForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editFacilityName">Facility Name *</label>
+                        <input type="text" id="editFacilityName" name="facilityName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editFacilityType">Type *</label>
+                        <select id="editFacilityType" name="facilityType" required>
+                            <option value="">Select Type</option>
+                            <option value="recreation">Recreation</option>
+                            <option value="business">Business</option>
+                            <option value="wellness">Wellness</option>
+                            <option value="dining">Dining</option>
+                            <option value="events">Events</option>
+                            <option value="sports">Sports</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editCapacity">Capacity *</label>
+                        <input type="number" id="editCapacity" name="capacity" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editPricePerHour">Price per Hour</label>
+                        <input type="number" id="editPricePerHour" name="pricePerHour" min="0" step="0.01">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editOperatingHours">Operating Hours *</label>
+                        <input type="text" id="editOperatingHours" name="operatingHours" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editFacilityStatus">Status</label>
+                        <select id="editFacilityStatus" name="facilityStatus">
+                            <option value="open">Open</option>
+                            <option value="closed">Closed</option>
+                            <option value="maintenance">Maintenance</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editFacilityDescription">Description</label>
+                    <textarea id="editFacilityDescription" name="facilityDescription" rows="3" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; resize: vertical;"></textarea>
+                </div>
+            </form>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeEditFacilityModal()">Cancel</button>
+                <button type="button" class="btn-save" onclick="updateFacility()">Update Facility</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/facilities.js"></script>
+    <script src="../js/login.js"></script>
+</body>
+</html>

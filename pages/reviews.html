@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guest Reviews - Hotel Management System</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Hotel Management</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li onclick="window.location.href='../index.html'">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </li>
+                    <li onclick="window.location.href='dashboard.html'">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li onclick="window.location.href='rooms.html'">
+                        <i class="fas fa-bed"></i>
+                        <span>Rooms</span>
+                    </li>
+                    <li onclick="window.location.href='bookings.html'">
+                        <i class="fas fa-calendar"></i>
+                        <span>Bookings</span>
+                    </li>
+                    <li onclick="window.location.href='guests.html'">
+                        <i class="fas fa-users"></i>
+                        <span>Guests</span>
+                    </li>
+                    <li onclick="window.location.href='employees.html'">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Employees</span>
+                    </li>
+                    <li onclick="window.location.href='departments.html'">
+                        <i class="fas fa-building"></i>
+                        <span>Departments</span>
+                    </li>
+                    <li onclick="window.location.href='inventory.html'">
+                        <i class="fas fa-box"></i>
+                        <span>Inventory</span>
+                    </li>
+                    <li onclick="window.location.href='roomservice.html'">
+                        <i class="fas fa-concierge-bell"></i>
+                        <span>Room Service</span>
+                    </li>
+                    <li onclick="window.location.href='facilities.html'">
+                        <i class="fas fa-cog"></i>
+                        <span>Facilities</span>
+                    </li>
+                    <li onclick="window.location.href='maintenance.html'">
+                        <i class="fas fa-wrench"></i>
+                        <span>Maintenance</span>
+                    </li>
+                    <li class="active">
+                        <i class="fas fa-star"></i>
+                        <span>Reviews</span>
+                    </li>
+                    <li onclick="window.location.href='payments.html'">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Payments</span>
+                    </li>
+                    <li onclick="window.location.href='users.html'">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Users</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-user">
+                    <div class="user-info">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Reviews Content -->
+            <div class="reviews-content">
+                <div class="reviews-header">
+                    <div class="page-title">
+                        <h1>Guest Reviews</h1>
+                        <p>Monitor and manage guest feedback</p>
+                    </div>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>3.8</h3>
+                            <p>Average Rating</p>
+                            <span>From 6 reviews</span>
+                            <div class="star-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon success">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>2</h3>
+                            <p>5-Star Reviews</p>
+                            <span>33% of total</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>284</h3>
+                            <p>Total Reviews</p>
+                            <span>All time reviews</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>1</h3>
+                            <p>Needs Attention</p>
+                            <span>Low ratings</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rating Distribution Chart -->
+                <div class="rating-distribution">
+                    <h3>Rating Distribution</h3>
+                    <div class="distribution-chart">
+                        <div class="rating-bar">
+                            <div class="rating-label">
+                                <i class="fas fa-star"></i>
+                                <span>5</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 33%"></div>
+                            </div>
+                            <span class="bar-count">2</span>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="rating-label">
+                                <i class="fas fa-star"></i>
+                                <span>4</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 33%"></div>
+                            </div>
+                            <span class="bar-count">2</span>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="rating-label">
+                                <i class="fas fa-star"></i>
+                                <span>3</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 17%"></div>
+                            </div>
+                            <span class="bar-count">1</span>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="rating-label">
+                                <i class="fas fa-star"></i>
+                                <span>2</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 17%"></div>
+                            </div>
+                            <span class="bar-count">1</span>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="rating-label">
+                                <i class="fas fa-star"></i>
+                                <span>1</span>
+                            </div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="bar-count">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search and Filter Section -->
+                <div class="search-filter-section">
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="reviewSearch" placeholder="Search reviews...">
+                    </div>
+                    <div class="filter-container">
+                        <i class="fas fa-filter"></i>
+                        <select id="ratingFilter">
+                            <option value="">All Ratings</option>
+                            <option value="5">5 Stars</option>
+                            <option value="4">4 Stars</option>
+                            <option value="3">3 Stars</option>
+                            <option value="2">2 Stars</option>
+                            <option value="1">1 Star</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Reviews List -->
+                <div class="reviews-list">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <h4>John Smith</h4>
+                                <div class="review-badges">
+                                    <span class="badge room-badge">Room 201</span>
+                                    <span class="badge category-badge">Room</span>
+                                </div>
+                            </div>
+                            <div class="review-meta">
+                                <span class="review-date">2025-10-12</span>
+                                <div class="review-rating">
+                                    <div class="star-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="rating-score">5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <p>Excellent service and very clean rooms. The staff was incredibly helpful and friendly.</p>
+                        </div>
+                        <div class="review-footer">
+                            <div class="review-status">
+                                <span class="status-badge status-published">Published</span>
+                                <span class="review-id">REV-001</span>
+                            </div>
+                            <div class="review-actions">
+                                <button class="action-btn view-btn" onclick="viewReview('REV-001')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="action-btn edit-btn" onclick="editReview('REV-001')">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <h4>Sarah Johnson</h4>
+                                <div class="review-badges">
+                                    <span class="badge room-badge">Room 305</span>
+                                    <span class="badge category-badge">Service</span>
+                                </div>
+                            </div>
+                            <div class="review-meta">
+                                <span class="review-date">2025-10-11</span>
+                                <div class="review-rating">
+                                    <div class="star-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <span class="rating-score">4.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <p>Great location and comfortable beds. The breakfast could be improved.</p>
+                        </div>
+                        <div class="review-footer">
+                            <div class="review-status">
+                                <span class="status-badge status-published">Published</span>
+                                <span class="review-id">REV-002</span>
+                            </div>
+                            <div class="review-actions">
+                                <button class="action-btn view-btn" onclick="viewReview('REV-002')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="action-btn edit-btn" onclick="editReview('REV-002')">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <h4>Michael Brown</h4>
+                                <div class="review-badges">
+                                    <span class="badge room-badge">Room 102</span>
+                                    <span class="badge category-badge">Room</span>
+                                </div>
+                            </div>
+                            <div class="review-meta">
+                                <span class="review-date">2025-10-10</span>
+                                <div class="review-rating">
+                                    <div class="star-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                    <span class="rating-score">3.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <p>Average experience. Room was okay but the AC was not working properly.</p>
+                        </div>
+                        <div class="review-footer">
+                            <div class="review-status">
+                                <span class="status-badge status-under-review">Under Review</span>
+                                <span class="review-id">REV-003</span>
+                            </div>
+                            <div class="review-actions">
+                                <button class="action-btn view-btn" onclick="viewReview('REV-003')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="action-btn edit-btn" onclick="editReview('REV-003')">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <h4>Emily Davis</h4>
+                                <div class="review-badges">
+                                    <span class="badge room-badge">Room 408</span>
+                                    <span class="badge category-badge">Overall</span>
+                                </div>
+                            </div>
+                            <div class="review-meta">
+                                <span class="review-date">2025-10-09</span>
+                                <div class="review-rating">
+                                    <div class="star-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="rating-score">5.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <p>Amazing stay! Beautiful room with a great view. Will definitely come back.</p>
+                        </div>
+                        <div class="review-footer">
+                            <div class="review-status">
+                                <span class="status-badge status-published">Published</span>
+                                <span class="review-id">REV-004</span>
+                            </div>
+                            <div class="review-actions">
+                                <button class="action-btn view-btn" onclick="viewReview('REV-004')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="action-btn edit-btn" onclick="editReview('REV-004')">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Review Modal -->
+    <div id="viewReviewModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Review Details</h2>
+                <span class="close" onclick="closeViewReviewModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="review-details">
+                    <div class="detail-row">
+                        <strong>Review ID:</strong>
+                        <span id="viewReviewId">REV-001</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Guest Name:</strong>
+                        <span id="viewReviewGuest">John Smith</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Room:</strong>
+                        <span id="viewReviewRoom">Room 201</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Category:</strong>
+                        <span id="viewReviewCategory">Room</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Rating:</strong>
+                        <span id="viewReviewRating" class="star-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="rating-score">5.0</span>
+                        </span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Date:</strong>
+                        <span id="viewReviewDate">2025-10-12</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Status:</strong>
+                        <span id="viewReviewStatus" class="status-badge status-published">Published</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Review:</strong>
+                        <span id="viewReviewContent">Excellent service and very clean rooms. The staff was incredibly helpful and friendly.</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeViewReviewModal()">Close</button>
+                <button type="button" class="btn-save" onclick="editReviewFromView()">Edit Review</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Review Modal -->
+    <div id="editReviewModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Review</h2>
+                <span class="close" onclick="closeEditReviewModal()">&times;</span>
+            </div>
+            <form id="editReviewForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editGuestName">Guest Name *</label>
+                        <input type="text" id="editGuestName" name="guestName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editRoomNumber">Room Number *</label>
+                        <input type="text" id="editRoomNumber" name="roomNumber" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editCategory">Category *</label>
+                        <select id="editCategory" name="category" required>
+                            <option value="">Select Category</option>
+                            <option value="room">Room</option>
+                            <option value="service">Service</option>
+                            <option value="overall">Overall</option>
+                            <option value="dining">Dining</option>
+                            <option value="facilities">Facilities</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editRating">Rating *</label>
+                        <select id="editRating" name="rating" required>
+                            <option value="">Select Rating</option>
+                            <option value="5">5 Stars</option>
+                            <option value="4">4 Stars</option>
+                            <option value="3">3 Stars</option>
+                            <option value="2">2 Stars</option>
+                            <option value="1">1 Star</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editReviewStatus">Status</label>
+                        <select id="editReviewStatus" name="reviewStatus">
+                            <option value="published">Published</option>
+                            <option value="under-review">Under Review</option>
+                            <option value="hidden">Hidden</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editReviewDate">Date</label>
+                        <input type="date" id="editReviewDate" name="reviewDate">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editReviewContent">Review Content *</label>
+                    <textarea id="editReviewContent" name="reviewContent" rows="4" required style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-size: 1rem; resize: vertical;"></textarea>
+                </div>
+            </form>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeEditReviewModal()">Cancel</button>
+                <button type="button" class="btn-save" onclick="updateReview()">Update Review</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/reviews.js"></script>
+    <script src="../js/login.js"></script>
+</body>
+</html>

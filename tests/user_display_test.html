@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Display Test</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Hotel Management</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li onclick="window.location.href='rooms.html'">
+                        <i class="fas fa-bed"></i>
+                        <span>Rooms</span>
+                    </li>
+                    <li onclick="window.location.href='bookings.html'">
+                        <i class="fas fa-calendar"></i>
+                        <span>Bookings</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-user">
+                    <div class="user-info">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Test Content -->
+            <div class="dashboard-content">
+                <div class="dashboard-header">
+                    <h1>User Display Test</h1>
+                    <p>This page tests the dynamic user information display.</p>
+                </div>
+
+                <div class="test-section">
+                    <h2>Current User Information</h2>
+                    <div id="user-info-display">
+                        <p><strong>Name:</strong> <span id="current-name">Loading...</span></p>
+                        <p><strong>Email:</strong> <span id="current-email">Loading...</span></p>
+                        <p><strong>Role:</strong> <span id="current-role">Loading...</span></p>
+                        <p><strong>Avatar Letter:</strong> <span id="current-avatar">Loading...</span></p>
+                    </div>
+                </div>
+
+                <div class="test-section">
+                    <h2>Test Actions</h2>
+                    <button class="test-btn" onclick="testUserDisplay()">Test User Display</button>
+                    <button class="test-btn" onclick="simulateLogin()">Simulate Login</button>
+                    <button class="test-btn" onclick="checkSession()">Check Session</button>
+                    <button class="test-btn" onclick="clearSession()">Clear Session</button>
+                </div>
+
+                <div class="test-section">
+                    <h2>Session Data</h2>
+                    <pre id="session-data">No session data</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+    <script>
+        // Test functions
+        function testUserDisplay() {
+            console.log('Testing user display...');
+            displayCurrentUser();
+            updateUserInfoDisplay();
+        }
+
+        function simulateLogin() {
+            const testUser = {
+                id: 1,
+                firstName: "John",
+                lastName: "Manager",
+                name: "John Manager",
+                email: "john.manager@hotel.com",
+                role: "manager",
+                phone: "+1 (555) 123-4567",
+                loginTime: new Date().toISOString()
+            };
+            
+            localStorage.setItem('hotelUserSession', JSON.stringify(testUser));
+            console.log('Test user session created - will show "Manager" instead of "John Manager"');
+            testUserDisplay();
+        }
+
+        function checkSession() {
+            const session = localStorage.getItem('hotelUserSession') || sessionStorage.getItem('hotelUserSession');
+            document.getElementById('session-data').textContent = session ? JSON.stringify(JSON.parse(session), null, 2) : 'No session data';
+        }
+
+        function clearSession() {
+            localStorage.removeItem('hotelUserSession');
+            sessionStorage.removeItem('hotelUserSession');
+            console.log('Session cleared');
+            testUserDisplay();
+        }
+
+        function updateUserInfoDisplay() {
+            const user = getCurrentUser();
+            if (user) {
+                document.getElementById('current-name').textContent = user.role.charAt(0).toUpperCase() + user.role.slice(1);
+                document.getElementById('current-email').textContent = user.email;
+                document.getElementById('current-role').textContent = user.role;
+                document.getElementById('current-avatar').textContent = user.role.charAt(0).toUpperCase();
+            } else {
+                document.getElementById('current-name').textContent = 'No user logged in';
+                document.getElementById('current-email').textContent = 'No user logged in';
+                document.getElementById('current-role').textContent = 'No user logged in';
+                document.getElementById('current-avatar').textContent = 'U';
+            }
+            checkSession();
+        }
+
+        // Initialize on page load
+        window.onload = function() {
+            console.log('User display test page loaded');
+            testUserDisplay();
+        };
+    </script>
+
+    <style>
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .test-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 14px;
+        }
+
+        .test-btn:hover {
+            background: #2980b9;
+        }
+
+        #user-info-display {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+
+        #session-data {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - Hotel Management System</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/icons.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>Hotel Management</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li onclick="window.location.href='../index.html'">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </li>
+                    <li onclick="window.location.href='dashboard.html'">
+                        <i class="fas fa-th-large"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li onclick="window.location.href='rooms.html'">
+                        <i class="fas fa-bed"></i>
+                        <span>Rooms</span>
+                    </li>
+                    <li onclick="window.location.href='bookings.html'">
+                        <i class="fas fa-calendar"></i>
+                        <span>Bookings</span>
+                    </li>
+                    <li onclick="window.location.href='guests.html'">
+                        <i class="fas fa-users"></i>
+                        <span>Guests</span>
+                    </li>
+                    <li onclick="window.location.href='employees.html'">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Employees</span>
+                    </li>
+                    <li onclick="window.location.href='departments.html'">
+                        <i class="fas fa-building"></i>
+                        <span>Departments</span>
+                    </li>
+                    <li onclick="window.location.href='inventory.html'">
+                        <i class="fas fa-box"></i>
+                        <span>Inventory</span>
+                    </li>
+                    <li onclick="window.location.href='roomservice.html'">
+                        <i class="fas fa-concierge-bell"></i>
+                        <span>Room Service</span>
+                    </li>
+                    <li onclick="window.location.href='facilities.html'">
+                        <i class="fas fa-cog"></i>
+                        <span>Facilities</span>
+                    </li>
+                    <li onclick="window.location.href='maintenance.html'">
+                        <i class="fas fa-wrench"></i>
+                        <span>Maintenance</span>
+                    </li>
+                    <li onclick="window.location.href='reviews.html'">
+                        <i class="fas fa-star"></i>
+                        <span>Reviews</span>
+                    </li>
+                    <li onclick="window.location.href='payments.html'">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Payments</span>
+                    </li>
+                    <li class="active">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Users</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-user">
+                    <div class="user-info">
+                        <h3></h3>
+                        <p></p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <button class="add-user-btn" onclick="openAddUserModal()">
+                        <i class="fas fa-plus"></i>
+                        Add User
+                    </button>
+
+                </div>
+            </header>
+
+            <!-- Users Content -->
+            <div class="users-content">
+                <div class="users-header">
+                    <div class="page-title">
+                        <h1>User Management</h1>
+                        <p>Manage system users and permissions</p>
+                    </div>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="summary-cards">
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>24</h3>
+                            <p>Total Users</p>
+                            <span>System users</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon success">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>5</h3>
+                            <p>Active Users</p>
+                            <span>Currently active</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon admin">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>1</h3>
+                            <p>Admins</p>
+                            <span>Admin accounts</span>
+                        </div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="card-icon">
+                            <i class="fas fa-user-tag"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>6</h3>
+                            <p>Roles</p>
+                            <span>Different roles</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search and Filter Section -->
+                <div class="search-filter-section">
+                    <div class="search-container">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="userSearch" placeholder="Search users...">
+                    </div>
+                    <div class="filter-container">
+                        <i class="fas fa-filter"></i>
+                        <select id="roleFilter">
+                            <option value="">All Roles</option>
+                            <option value="admin">Admin</option>
+                            <option value="manager">Manager</option>
+                            <option value="receptionist">Receptionist</option>
+                            <option value="housekeeping">Housekeeping</option>
+                            <option value="maintenance">Maintenance</option>
+                            <option value="chef">Chef</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Users Table -->
+                <div class="table-container">
+                    <table class="users-table">
+                        <thead>
+                            <tr>
+                                <th>User ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Last Login</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <tr>
+                                <td>U-001</td>
+                                <td>admin</td>
+                                <td>Admin</td>
+                                <td></td>
+                                <td><span class="role-badge role-admin">Admin</span></td>
+                                <td>2025-10-13 09:30</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewUser('U-001')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editUser('U-001')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn delete-btn" onclick="deleteUser('U-001')">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>U-002</td>
+                                <td>manager1</td>
+                                <td>Emma Taylor</td>
+                                <td>emma.t@hotel.com</td>
+                                <td><span class="role-badge role-manager">Manager</span></td>
+                                <td>2025-10-13 08:15</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewUser('U-002')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editUser('U-002')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn delete-btn" onclick="deleteUser('U-002')">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>U-003</td>
+                                <td>receptionist1</td>
+                                <td>Alice Cooper</td>
+                                <td>alice.c@hotel.com</td>
+                                <td><span class="role-badge role-receptionist">Receptionist</span></td>
+                                <td>2025-10-13 07:00</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewUser('U-003')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editUser('U-003')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn delete-btn" onclick="deleteUser('U-003')">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>U-004</td>
+                                <td>housekeeping1</td>
+                                <td>Bob Martinez</td>
+                                <td>bob.m@hotel.com</td>
+                                <td><span class="role-badge role-housekeeping">Housekeeping</span></td>
+                                <td>2025-10-12 16:45</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewUser('U-004')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editUser('U-004')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn delete-btn" onclick="deleteUser('U-004')">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>U-005</td>
+                                <td>maintenance1</td>
+                                <td>Daniel Lee</td>
+                                <td>daniel.l@hotel.com</td>
+                                <td><span class="role-badge role-maintenance">Maintenance</span></td>
+                                <td>2025-10-13 06:30</td>
+                                <td><span class="status-badge status-active">Active</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewUser('U-005')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editUser('U-005')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn delete-btn" onclick="deleteUser('U-005')">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>U-006</td>
+                                <td>chef1</td>
+                                <td>Carol White</td>
+                                <td>carol.w@hotel.com</td>
+                                <td><span class="role-badge role-chef">Chef</span></td>
+                                <td>2025-10-05 14:20</td>
+                                <td><span class="status-badge status-inactive">Inactive</span></td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="action-btn view-btn" onclick="viewUser('U-006')">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="action-btn edit-btn" onclick="editUser('U-006')">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="action-btn delete-btn" onclick="deleteUser('U-006')">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Role Permissions Section -->
+                <div class="role-permissions-section">
+                    <h3>Role Permissions</h3>
+                    <div class="permissions-grid">
+                        <div class="permission-card">
+                            <div class="permission-header">
+                                <div class="permission-icon admin">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="permission-info">
+                                    <h4>Admin</h4>
+                                    <p>Full system access including user management, settings, and all modules.</p>
+                                </div>
+                                <button class="edit-permission-btn" onclick="editRolePermissions('admin')">
+                                    <i class="fas fa-edit"></i>
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                        <div class="permission-card">
+                            <div class="permission-header">
+                                <div class="permission-icon manager">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <div class="permission-info">
+                                    <h4>Manager</h4>
+                                    <p>Access to bookings, guests, employees, and reports. Limited system settings access.</p>
+                                </div>
+                                <button class="edit-permission-btn" onclick="editRolePermissions('manager')">
+                                    <i class="fas fa-edit"></i>
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                        <div class="permission-card">
+                            <div class="permission-header">
+                                <div class="permission-icon receptionist">
+                                    <i class="fas fa-user-check"></i>
+                                </div>
+                                <div class="permission-info">
+                                    <h4>Receptionist</h4>
+                                    <p>Access to bookings, guests, and check-in/check-out operations.</p>
+                                </div>
+                                <button class="edit-permission-btn" onclick="editRolePermissions('receptionist')">
+                                    <i class="fas fa-edit"></i>
+                                    Edit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add User Modal -->
+    <div id="addUserModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New User</h2>
+                <span class="close" onclick="closeAddUserModal()">&times;</span>
+            </div>
+            <form id="addUserForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="text" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Role *</label>
+                        <select id="role" name="role" required>
+                            <option value="">Select Role</option>
+                            <option value="admin">Admin</option>
+                            <option value="manager">Manager</option>
+                            <option value="receptionist">Receptionist</option>
+                            <option value="housekeeping">Housekeeping</option>
+                            <option value="maintenance">Maintenance</option>
+                            <option value="chef">Chef</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">Password *</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirm Password *</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="userStatus">Status</label>
+                        <select id="userStatus" name="userStatus">
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="department">Department</label>
+                        <select id="department" name="department">
+                            <option value="">Select Department</option>
+                            <option value="front-office">Front Office</option>
+                            <option value="housekeeping">Housekeeping</option>
+                            <option value="maintenance">Maintenance</option>
+                            <option value="food-beverage">Food & Beverage</option>
+                            <option value="management">Management</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeAddUserModal()">Cancel</button>
+                <button type="button" class="btn-save" onclick="saveUser()">Create User</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- View User Modal -->
+    <div id="viewUserModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>User Details</h2>
+                <span class="close" onclick="closeViewUserModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="user-details">
+                    <div class="detail-row">
+                        <strong>User ID:</strong>
+                        <span id="viewUserId">U-001</span>
+                    </div>
+                    <div class="detail-row">
+                    </div>
+                    <div class="detail-row">
+                        <strong>Full Name:</strong>
+                        <span id="viewFullName">Admin</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Email:</strong>
+                        <span id="viewEmail"></span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Role:</strong>
+                        <span id="viewRole" class="role-badge role-admin">Admin</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Status:</strong>
+                        <span id="viewStatus" class="status-badge status-active">Active</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Last Login:</strong>
+                        <span id="viewLastLogin">2025-10-13 09:30</span>
+                    </div>
+                    <div class="detail-row">
+                        <strong>Department:</strong>
+                        <span id="viewDepartment">Management</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeViewUserModal()">Close</button>
+                <button type="button" class="btn-save" onclick="editUserFromView()">Edit User</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit User Modal -->
+    <div id="editUserModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit User</h2>
+                <span class="close" onclick="closeEditUserModal()">&times;</span>
+            </div>
+            <form id="editUserForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editEmail">Email *</label>
+                        <input type="text" id="editEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editFullName">Full Name *</label>
+                        <input type="text" id="editFullName" name="fullName" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editEmail">Email *</label>
+                        <input type="email" id="editEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editRole">Role *</label>
+                        <select id="editRole" name="role" required>
+                            <option value="">Select Role</option>
+                            <option value="admin">Admin</option>
+                            <option value="manager">Manager</option>
+                            <option value="receptionist">Receptionist</option>
+                            <option value="housekeeping">Housekeeping</option>
+                            <option value="maintenance">Maintenance</option>
+                            <option value="chef">Chef</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editUserStatus">Status</label>
+                        <select id="editUserStatus" name="userStatus">
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editDepartment">Department</label>
+                        <select id="editDepartment" name="department">
+                            <option value="">Select Department</option>
+                            <option value="front-office">Front Office</option>
+                            <option value="housekeeping">Housekeeping</option>
+                            <option value="maintenance">Maintenance</option>
+                            <option value="food-beverage">Food & Beverage</option>
+                            <option value="management">Management</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editPassword">New Password (leave blank to keep current)</label>
+                    <input type="password" id="editPassword" name="password">
+                </div>
+            </form>
+            <div class="modal-actions">
+                <button type="button" class="btn-cancel" onclick="closeEditUserModal()">Cancel</button>
+                <button type="button" class="btn-save" onclick="updateUser()">Update User</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/users.js"></script>
+    <script src="../js/login.js"></script>
+    <script>
+        // Fallback logout function to ensure it works
+        function logout() {
+            console.log('Fallback logout function called');
+            
+            if (confirm('Are you sure you want to logout?')) {
+                // Clear all session data
+                localStorage.removeItem('hotelUserSession');
+                sessionStorage.removeItem('hotelUserSession');
+                
+                // Clear all data
+                localStorage.clear();
+                sessionStorage.clear();
+                
+                alert('Logged out successfully! Redirecting to login page...');
+                
+                // Redirect to login page
+                window.location.href = 'login.html';
+            }
+        }
+    </script>
+</body>
+</html>
+
