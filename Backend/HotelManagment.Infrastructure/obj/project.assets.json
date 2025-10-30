@@ -992,9 +992,6 @@
       "HotelManagment.Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
-        "dependencies": {
-          "HotelManagment.Domain": "1.0.0"
-        },
         "compile": {
           "bin/placeholder/HotelManagment.Application.dll": {}
         },
@@ -2815,10 +2812,12 @@
           "targetAlias": "net9.0",
           "projectReferences": {
             "C:\\Users\\Taqey\\source\\repos\\Hotel-Management\\Backend\\HotelManagment.Application\\HotelManagment.Application.csproj": {
-              "projectPath": "C:\\Users\\Taqey\\source\\repos\\Hotel-Management\\Backend\\HotelManagment.Application\\HotelManagment.Application.csproj"
+              "projectPath": "C:\\Users\\Taqey\\source\\repos\\Hotel-Management\\Backend\\HotelManagment.Application\\HotelManagment.Application.csproj",
+              "privateAssets": "all"
             },
             "C:\\Users\\Taqey\\source\\repos\\Hotel-Management\\Backend\\HotelManagment.Domain\\HotelManagment.Domain.csproj": {
-              "projectPath": "C:\\Users\\Taqey\\source\\repos\\Hotel-Management\\Backend\\HotelManagment.Domain\\HotelManagment.Domain.csproj"
+              "projectPath": "C:\\Users\\Taqey\\source\\repos\\Hotel-Management\\Backend\\HotelManagment.Domain\\HotelManagment.Domain.csproj",
+              "privateAssets": "all"
             }
           }
         }
