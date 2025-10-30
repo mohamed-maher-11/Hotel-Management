@@ -30,3 +30,5 @@ npm-debug.log*
 # Build files (if using build tools)
 dist/
 build/
+/Backend/.vs/HotelManagment
+/.gitignore
