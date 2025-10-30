@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Implementation\Services\" />
+    <Folder Include="Implementation\Repositories\" />
+    <Folder Include="Interfaces\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HotelManagment.Application\HotelManagment.Application.csproj" />
+    <ProjectReference Include="..\HotelManagment.Domain\HotelManagment.Domain.csproj" />
+  </ItemGroup>
+
+</Project>
