@@ -1,0 +1,16 @@
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Application\bin\Debug\net9.0\HotelManagment.Application.deps.json
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Application\bin\Debug\net9.0\HotelManagment.Application.dll
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Application\bin\Debug\net9.0\HotelManagment.Application.pdb
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Application\bin\Debug\net9.0\HotelManagment.Domain.dll
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Application\bin\Debug\net9.0\HotelManagment.Domain.pdb
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Application\obj\Debug\net9.0\HotelManagment.Application.csproj.AssemblyReference.cache
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Application\obj\Debug\net9.0\HotelManagment.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Application\obj\Debug\net9.0\HotelManagment.Application.AssemblyInfoInputs.cache
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Application\obj\Debug\net9.0\HotelManagment.Application.AssemblyInfo.cs
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Application\obj\Debug\net9.0\HotelManagment.Application.csproj.CoreCompileInputs.cache
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Application\obj\Debug\net9.0\HotelManagment.Application.sourcelink.json
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Application\obj\Debug\net9.0\HotelMan.FA49BA24.Up2Date
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Application\obj\Debug\net9.0\HotelManagment.Application.dll
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Application\obj\Debug\net9.0\refint\HotelManagment.Application.dll
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Application\obj\Debug\net9.0\HotelManagment.Application.pdb
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Application\obj\Debug\net9.0\ref\HotelManagment.Application.dll

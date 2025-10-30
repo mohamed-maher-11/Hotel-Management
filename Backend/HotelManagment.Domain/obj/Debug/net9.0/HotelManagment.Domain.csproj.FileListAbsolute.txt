@@ -1,0 +1,13 @@
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Domain\bin\Debug\net9.0\HotelManagment.Domain.deps.json
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Domain\bin\Debug\net9.0\HotelManagment.Domain.dll
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Domain\bin\Debug\net9.0\HotelManagment.Domain.pdb
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Domain\obj\Debug\net9.0\HotelManagment.Domain.csproj.AssemblyReference.cache
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Domain\obj\Debug\net9.0\HotelManagment.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Domain\obj\Debug\net9.0\HotelManagment.Domain.AssemblyInfoInputs.cache
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Domain\obj\Debug\net9.0\HotelManagment.Domain.AssemblyInfo.cs
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Domain\obj\Debug\net9.0\HotelManagment.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Domain\obj\Debug\net9.0\HotelManagment.Domain.sourcelink.json
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Domain\obj\Debug\net9.0\HotelManagment.Domain.dll
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Domain\obj\Debug\net9.0\refint\HotelManagment.Domain.dll
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Domain\obj\Debug\net9.0\HotelManagment.Domain.pdb
+C:\Users\Taqey\source\repos\Hotel-Management\Backend\HotelManagment.Domain\obj\Debug\net9.0\ref\HotelManagment.Domain.dll
