@@ -575,9 +575,6 @@
         }
       },
       "HotelManagment.Application/1.0.0": {
-        "dependencies": {
-          "HotelManagment.Domain": "1.0.0"
-        },
         "runtime": {
           "HotelManagment.Application.dll": {
             "assemblyVersion": "1.0.0.0",

@@ -10,9 +10,11 @@
     <Folder Include="Implementation\Services\" />
     <Folder Include="Interfaces\Services\" />
   </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\HotelManagment.Domain\HotelManagment.Domain.csproj">
+			<PrivateAssets>all</PrivateAssets>
+		</ProjectReference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\HotelManagment.Domain\HotelManagment.Domain.csproj" />
-  </ItemGroup>
 
 </Project>

@@ -12,9 +12,13 @@
     <Folder Include="Interfaces\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\HotelManagment.Application\HotelManagment.Application.csproj" />
-    <ProjectReference Include="..\HotelManagment.Domain\HotelManagment.Domain.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\HotelManagment.Application\HotelManagment.Application.csproj">
+			<PrivateAssets>all</PrivateAssets>
+		</ProjectReference>
+		<ProjectReference Include="..\HotelManagment.Domain\HotelManagment.Domain.csproj">
+			<PrivateAssets>all</PrivateAssets>
+		</ProjectReference>
+	</ItemGroup>
 
 </Project>

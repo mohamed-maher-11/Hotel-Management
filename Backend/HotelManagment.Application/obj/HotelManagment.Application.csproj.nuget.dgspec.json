@@ -33,7 +33,8 @@
             "targetAlias": "net9.0",
             "projectReferences": {
               "C:\\Users\\Taqey\\source\\repos\\Hotel-Management\\Backend\\HotelManagment.Domain\\HotelManagment.Domain.csproj": {
-                "projectPath": "C:\\Users\\Taqey\\source\\repos\\Hotel-Management\\Backend\\HotelManagment.Domain\\HotelManagment.Domain.csproj"
+                "projectPath": "C:\\Users\\Taqey\\source\\repos\\Hotel-Management\\Backend\\HotelManagment.Domain\\HotelManagment.Domain.csproj",
+                "privateAssets": "all"
               }
             }
           }
