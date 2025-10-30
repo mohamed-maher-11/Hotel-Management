@@ -26,8 +26,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -42,8 +46,7 @@
               "RelativeToolTip": "HotelManagment.Application\\Implementation\\Helper\\JwtSettings.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-30T12:14:07.536Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-30T12:14:07.536Z"
             },
             {
               "$type": "Document",
@@ -55,8 +58,7 @@
               "RelativeToolTip": "HotelManagment.API\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAowAwAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-30T11:57:53.392Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-30T11:57:53.392Z"
             },
             {
               "$type": "Document",
@@ -66,7 +68,7 @@
               "RelativeDocumentMoniker": "HotelManagment.API\\Program.cs",
               "ToolTip": "C:\\Users\\Taqey\\source\\repos\\Hotel-Management\\Backend\\HotelManagment.API\\Program.cs",
               "RelativeToolTip": "HotelManagment.API\\Program.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAAmwE4AAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAmwFgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-30T09:32:46.252Z",
               "EditorCaption": ""
